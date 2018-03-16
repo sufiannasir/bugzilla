@@ -1,0 +1,28 @@
+<table border=1>
+	<thead>
+		<tr>
+			<th>Title</th>
+			<th>Description</th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @projects.each do |project| %>
+		<tr>
+			<td><%=  project["title"] %></td>
+			<td><%=  project["description"] %></td>
+
+			<td>
+				<% if @session[:role]== "manager" then %>
+
+				<%= link_to "Delete Project", "/project/delete/#{project.id}" %>
+				<%= link_to "Show Users", "/project/userslist/#{project.id}" %>
+				<% end %>
+
+				<%= link_to "Show Bugs", "/bugs/list/#{project.id}" %>
+
+			</td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>

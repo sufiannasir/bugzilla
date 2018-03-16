@@ -1,0 +1,5 @@
+<h1>User Signin</h1>
+<%= form_for @user, :url=> signin_process_path do |f| -%> 
+<%= f.label :email %>: <%= f.email_field :email %><br/><br/>
+<%= f.label :password %>: <%= f.password_field :password %><br/><br/>
+<%= f.submit :signin %> <% end -%>

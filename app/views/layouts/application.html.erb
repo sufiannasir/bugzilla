@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Bugzilla</title>
+	<%= csrf_meta_tags %>
+
+	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+	<%= javascript_include_tag "jquery.min.js", extname: false %>
+</head>
+
+<body>
+	<% if session[:id].present? then%>
+	<%= link_to "logout", logout_path %>
+	<%= link_to "dashboard", root_path %>
+	<%else%>
+	<%= link_to "Signin", users_signin_path %>
+	<%= link_to "Signup", users_signup_path %>
+	<% end %>
+	<% if session[:role].present? &&  session[:role]=="manager" then%>
+	<%= link_to "Add Project", project_create_path %>
+	<% end %>
+
+	<% flash.each do |name, message| %>
+	<p>
+		<i><%= "#{name}: #{message}" %></i>
+	</p>
+	<% end %>
+	
+	<%= yield %>
+</body>
+</html>

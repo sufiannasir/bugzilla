@@ -1,0 +1,47 @@
+<h1>Bugs Create</h1>
+
+<%=  form_tag(bug_create_process_path, method: "post",multipart: true) do -%> 
+
+<%= hidden_field(:project, :id, :value => params[:id]) %>
+
+<%= label_tag :Title %>: <%= text_field_tag :title %><br/><br/>
+<%= label_tag :Description %>: <%= text_area_tag :description %><br/><br/>
+<%= label_tag :"Type" %>: <%= 
+select_tag(:bug_type, '<option value="feature">Feature</option><option value="bug">Bug</option>'.html_safe) %>
+<br/><br/>
+<%= label_tag :"Status" %>: <%= 
+select_tag(:feature_status, '<option value="">Select Type</option><option value="new">New</option><option value="started">Started</option><option value="completed">Completed</option>'.html_safe) %>
+ <%= 
+select_tag(:bug_status, '<option value="">Select Type</option><option value="new">New</option><option value="started">Started</option><option value="resolved">Resolved</option>'.html_safe) %>
+<br/><br/>
+<%= label_tag :"Assign to" %>: <%= select_tag(:assignto,options_from_collection_for_select(
+@users, :id , :name) ) %>
+<br/><br/>
+<%= label_tag :"Screenshot" %>:  <%= file_field_tag 'screenshot' %>
+<br/><br/>
+<%= label_tag :"Deadline" %>:  <%= date_field  :bug ,:deadline  %>
+<br/><br/>
+<%= submit_tag :Add %> <% end -%>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+           $('#feature_status').hide();
+         // $('#bug_status').hide();
+
+  $("#type").change(function(){
+        
+     if( $('#type').val() == 'bug')
+     {
+         $('#feature_status').hide();
+
+         $('#bug_status').show()
+     }
+     else if( $('#type').val() == 'feature')
+     {
+         $('#bug_status').hide();
+         $('#feature_status').show();
+
+     }
+  });
+});
+</script>

@@ -1,0 +1,10 @@
+<h1>Project Create</h1>
+<%=  form_tag(project_create_process_path, method: "post") do -%> 
+<%= label_tag :title %>: <%= text_field_tag :title %><br/><br/>
+<%= label_tag :description %>: <%= text_area_tag :description %><br/><br/>
+<%= label_tag :Developers %>: <%= select_tag(:developers,options_from_collection_for_select(User.where(:user_type => "developer"), :id, :name),multiple: true ) %>
+<%= label_tag :QA %>: <%= select_tag(:qa,options_from_collection_for_select(User.where(:user_type => "qa"), :id, :name),multiple: true ) %>
+<%= submit_tag :Add %> <% end -%>
+
+
+
