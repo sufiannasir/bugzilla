@@ -17,6 +17,9 @@ body .navbar{
 .icon-bar{
 	background-color: #000;
 }
+.main-content{
+	min-height: 90vh;
+}
 @media screen and (max-width: 768px){
 	body .indent{
 		display: none;
