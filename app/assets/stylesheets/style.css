@@ -14,3 +14,11 @@ body .navbar{
 	padding-bottom: 10px;
 	line-height: 30px;
 }
+.icon-bar{
+	background-color: #000;
+}
+@media screen and (max-width: 768px){
+	body .indent{
+		display: none;
+	}
+}

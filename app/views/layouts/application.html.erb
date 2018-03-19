@@ -8,16 +8,24 @@
 </head>
 
 <body>
+
 	<nav class="navbar bg-info">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="<%= root_path %>">BugZilla</a>
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>                        
+				</button>
+				<a class="navbar-brand" href="#">BugZilla</a>
 			</div>
-			<ul class="nav navbar-nav">
-				<% if session[:id].present? then %>
-				<li><%= link_to "Dashboard", root_path %></li>
-				<% if session[:role].present? &&  session[:role]=="manager" then%>
-				<li><%= link_to "Add Project", project_create_path %><li>
+
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav">
+					<% if session[:id].present? then %>
+					<li><%= link_to "Dashboard", root_path %></li>
+					<% if session[:role].present? &&  session[:role]=="manager" then%>
+					<li><%= link_to "Add Project", project_create_path %></li>
 					<% end %>
 					<% end %>
 				</ul>
@@ -32,35 +40,36 @@
 					<% end %>
 				</ul>
 			</div>
-		</nav>
-		<div class="container-fluid bg-warning main-content p-20">
-			<div class="container text-center">
-				
-				<% flash.each do |name, message| %>
-				<% if name=="error" then
-					@class="alert-danger"
-				else
-					@class="alert-success"
-				end
-				%>
-				<div class="<%= @class %> alert alert-dismissible fade in col-md-6 col-md-offset-3 p-20">
-					<a href="#" class="close" dsta-dismiss="alert" aria-label="close">&times;</a>
-					<strong><%= name %></strong> <%= message %>
-				</div>
-				<div class="clearfix"></div>
-
-				<% end %>
-				<%= yield %>
-			</div>
 		</div>
+	</nav>
+	<div class="container-fluid bg-warning main-content p-20">
+		<div class="container text-center">
 
-		<!--Footer-->
-		<footer class="page-footer bg-info p-20">
-			<!--Copyright-->
-			<div class="footer-copyright py-3 text-center">
-				© 2018 Copyright: Devsinc
+			<% flash.each do |name, message| %>
+			<% if name=="error" then
+				@class="alert-danger"
+			else
+				@class="alert-success"
+			end
+			%>
+			<div class="<%= @class %> alert alert-dismissible fade in col-md-6 col-md-offset-3 p-20">
+				<a href="#" class="close" dsta-dismiss="alert" aria-label="close">&times;</a>
+				<strong><%= name %></strong> <%= message %>
 			</div>
-		</footer>    
+			<div class="clearfix"></div>
 
-	</body>
-	</html>
+			<% end %>
+			<%= yield %>
+		</div>
+	</div>
+
+	<!--Footer-->
+	<footer class="page-footer bg-info p-20">
+		<!--Copyright-->
+		<div class="footer-copyright py-3 text-center">
+			© 2018 Copyright: Devsinc
+		</div>
+	</footer>    
+
+</body>
+</html>
