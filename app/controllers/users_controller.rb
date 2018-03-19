@@ -8,7 +8,6 @@ class UsersController < ApplicationController
 	end
 
 	def signup_process
-
 		@req=params[:user]
 		@user = User.new()
 		@user.name=@req["name"]
@@ -16,6 +15,7 @@ class UsersController < ApplicationController
 		@user.password=@req["password"]
 		@user.user_type= @req["user_type"]
 		if @user.save then
+						flash[:success]= 'Signed up Successfully! Please Login.'
 			redirect_to users_signin_path
 		else
 			flash[:error]= 'Error while processing ! please try again later.'

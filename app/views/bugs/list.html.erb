@@ -1,32 +1,34 @@
-<%= link_to "Create Bug", create_bug_path %>
+<%= link_to "Create Bug", create_bug_path,:class => "btn btn-primary btn-lg" %>
 
 <h1>Bugs List</h1>
-<table border=1>
-	<thead>
-		<tr>
-			<th>Title</th>
-			<th>Created by</th>
-			<th>Assigned to</th>
-			<th>Description</th>
-			<th>Deadline</th>
-			<th>Screenshot</th>
-			<th>Type</th>
-			<th>Status</th>
-			
-		</tr>
-	</thead>
-	<tbody>
-		<% @bugs.each do |bug| %>
-		<tr>
-			<td><%=  bug["title"] %></td>
-			<td><%=  bug["createdby_id"] %></td>
-			<td><%=  bug["assignedto_id"] %></td>
-			<td><%=  bug["description"] %></td>
-			<td><%=  bug["deadline"] %></td>
-			<td><%= image_tag bug.screenshot %></td>
-			<td><%=  bug["bug_type"] %></td>
-			<td><%=  bug["status"] %></td>
-		</tr>
-		<% end %>
-	</tbody>
-</table>
+
+<div class="table-responsive">
+	<table class="table table-hover table-striped text-center table-bordered">
+		<thead>
+			<tr>
+				<th class="text-center">Title</th>
+				<th class="text-center">Created by</th>
+				<th class="text-center">Assigned to</th>
+				<th class="text-center">Description</th>
+				<th class="text-center">Deadline</th>
+				<th class="text-center">Type</th>
+				<th class="text-center">Status</th>
+				<th class="text-center">Screenshot</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @bugs.each do |bug| %>
+			<tr>
+				<td><%=  bug["title"] %></td>
+				<td><%=  bug["createdby_id"] %></td>
+				<td><%=  bug["assignedto_id"] %></td>
+				<td><%=  bug["description"] %></td>
+				<td><%=  bug["deadline"] %></td>
+				<td><%=  bug["bug_type"] %></td>
+				<td><%=  bug["status"] %></td>
+				<td><%= image_tag bug.screenshot %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>

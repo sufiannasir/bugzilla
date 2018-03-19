@@ -1,47 +1,26 @@
 <h1>Bugs Create</h1>
-
+<div class="col-md-6 col-md-offset-3">
 <%=  form_tag(bug_create_process_path, method: "post",multipart: true) do -%> 
 
 <%= hidden_field(:project, :id, :value => params[:id]) %>
 
-<%= label_tag :Title %>: <%= text_field_tag :title %><br/><br/>
-<%= label_tag :Description %>: <%= text_area_tag :description %><br/><br/>
-<%= label_tag :"Type" %>: <%= 
-select_tag(:bug_type, '<option value="feature">Feature</option><option value="bug">Bug</option>'.html_safe) %>
-<br/><br/>
-<%= label_tag :"Status" %>: <%= 
-select_tag(:feature_status, '<option value="">Select Type</option><option value="new">New</option><option value="started">Started</option><option value="completed">Completed</option>'.html_safe) %>
+<div class="pull-left"><%= label_tag :Title %>: </div><%= text_field_tag :title ,"", :class => "form-control" %>
+<div class="pull-left"><%= label_tag :Description %>:  </div><%= text_area_tag :description , "",:class => "form-control" %>
+<div class="pull-left"><%= label_tag :"Type" %>:  </div><%= 
+select_tag(:bug_type, '<option value="feature">Feature</option><option value="bug">Bug</option>'.html_safe, class: "form-control") %>
+
+<div class="pull-left"><%= label_tag :"Status" %>:  </div><%= 
+select_tag(:feature_status, '<option value="">Select Type</option><option value="new">New</option><option value="started">Started</option><option value="completed">Completed</option>'.html_safe, class: "form-control") %>
  <%= 
-select_tag(:bug_status, '<option value="">Select Type</option><option value="new">New</option><option value="started">Started</option><option value="resolved">Resolved</option>'.html_safe) %>
-<br/><br/>
-<%= label_tag :"Assign to" %>: <%= select_tag(:assignto,options_from_collection_for_select(
-@users, :id , :name) ) %>
-<br/><br/>
-<%= label_tag :"Screenshot" %>:  <%= file_field_tag 'screenshot' %>
-<br/><br/>
-<%= label_tag :"Deadline" %>:  <%= date_field  :bug ,:deadline  %>
-<br/><br/>
-<%= submit_tag :Add %> <% end -%>
+select_tag(:bug_status, '<option value="">Select Type</option><option value="new">New</option><option value="started">Started</option><option value="resolved">Resolved</option>'.html_safe, class: "form-control") %>
 
-<script type="text/javascript">
-	$(document).ready(function(){
-           $('#feature_status').hide();
-         // $('#bug_status').hide();
+<div class="pull-left"><%= label_tag :"Assign to" %>:  </div><%= select_tag(:assignto,options_from_collection_for_select(
+@users, :id , :name) , class: "form-control" ) %>
 
-  $("#type").change(function(){
-        
-     if( $('#type').val() == 'bug')
-     {
-         $('#feature_status').hide();
+<div class="pull-left"><%= label_tag :"Deadline" %>:   </div><%= date_field  :bug ,:deadline,:value => Time.now.strftime('%Y-%m-%d'), :class => "form-control" %>
 
-         $('#bug_status').show()
-     }
-     else if( $('#type').val() == 'feature')
-     {
-         $('#bug_status').hide();
-         $('#feature_status').show();
+<div class="pull-left"><%= label_tag :"Screenshot" %>:  </div> <%= file_field_tag 'screenshot', :class => "form-control" %>
 
-     }
-  });
-});
-</script>
+<%= submit_tag :Add , :class => "btn btn-lg btn-primary m-20" %> <% end -%>
+
+</div>

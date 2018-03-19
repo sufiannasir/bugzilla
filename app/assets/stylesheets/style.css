@@ -1,0 +1,16 @@
+body .navbar{
+	margin-bottom: 0px;
+}
+.p-20{
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+.m-20{
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+.indent{
+	padding-top: 10px;
+	padding-bottom: 10px;
+	line-height: 30px;
+}

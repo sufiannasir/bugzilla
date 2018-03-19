@@ -1,10 +1,10 @@
 <h1>Project Create</h1>
-<%=  form_tag(project_create_process_path, method: "post") do -%> 
-<%= label_tag :title %>: <%= text_field_tag :title %><br/><br/>
-<%= label_tag :description %>: <%= text_area_tag :description %><br/><br/>
-<%= label_tag :Developers %>: <%= select_tag(:developers,options_from_collection_for_select(User.where(:user_type => "developer"), :id, :name),multiple: true ) %>
-<%= label_tag :QA %>: <%= select_tag(:qa,options_from_collection_for_select(User.where(:user_type => "qa"), :id, :name),multiple: true ) %>
-<%= submit_tag :Add %> <% end -%>
-
-
-
+<div class="col-md-6 col-md-offset-3">
+	<%=  form_tag(project_create_process_path, method: "post") do -%> 
+	<div class="pull-left"><%= label_tag :title %>:  </div><%= text_field_tag :title , "" , :class => "form-control" %><br/><br/>
+	<div class="pull-left"><%= label_tag :description %>: </div> <%= text_area_tag :description , "" , :class => "form-control"  %><br/><br/>
+	<div class="pull-left"><%= label_tag :Developers %>: </div><%= select_tag(:developers,options_from_collection_for_select(User.where(:user_type => "developer"), :id, :name),multiple: true  , :class => "form-control" ) %>
+	<div class="pull-left"><%= label_tag :QA %>: </div><%= select_tag(:qa,options_from_collection_for_select(User.where(:user_type => "qa"), :id, :name),multiple: true  , :class => "form-control" ) %>
+	<%= submit_tag :Add  , :class => "btn btn-lg btn-primary m-20" %>
+	<% end -%>
+</div>
