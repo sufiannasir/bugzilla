@@ -15,6 +15,6 @@
   $('#bug_status').hide();
   $('#feature_status').show();
 
-  }
+  } 
   });
   });
